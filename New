@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор жаропонижающих</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #E0F7FA;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #F1F8E9;
+            border-radius: 10px;
+            border: 1px solid #C5E1A5;
+        }
+
+        .articles {
+            margin-top: 30px;
+        }
+
+        .articles h2 {
+            color: #333;
+        }
+
+        .articles ul {
+            padding-left: 20px;
+        }
+
+        .articles ul li {
+            margin-top: 5px;
+        }
+
+        .articles ul li a {
+            text-decoration: none;
+            color: #0288D1;
+        }
+
+        .articles ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Калькулятор жаропонижающих</h1>
+
+        <label for="weight">Вес ребенка (кг):</label>
+        <input type="number" id="weight" placeholder="Введите вес">
+
+        <button onclick="calculate()">Рассчитать дозировку</button>
+
+        <div class="result" id="result"></div>
+
+        <div class="articles">
+            <h2>Полезные статьи</h2>
+            <ul>
+                <li><a href="https://example.com/article1" target="_blank">Как выбрать жаропонижающее</a></li>
+                <li><a href="https://example.com/article2" target="_blank">Когда давать жаропонижающее детям</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            let weight = document.getElementById('weight').value;
+            if (!weight || weight <= 0) {
+                alert('Пожалуйста, введите корректный вес.');
+                return;
+            }
+
+            // Дозировка парацетамола: 10-15 мг/кг
+            let paracetamol_min = (10 * weight).toFixed(2);
+            let paracetamol_max = (15 * weight).toFixed(2);
+
+            // Дозировка ибупрофена: 5-10 мг/кг
+            let ibuprofen_min = (5 * weight).toFixed(2);
+            let ibuprofen_max = (10 * weight).toFixed(2);
+
+            document.getElementById('result').innerHTML = `
+                <h2>Рекомендуемая дозировка:</h2>
+                <p><strong>Парацетамол:</strong> от ${paracetamol_min} мг до ${paracetamol_max} мг</p>
+                <p><strong>Ибупрофен:</strong> от ${ibuprofen_min} мг до ${ibuprofen_max} мг</p>
+            `;
+        }
+    </script>
+</body>
+</html>
